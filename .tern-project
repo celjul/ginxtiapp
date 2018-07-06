@@ -1,0 +1,21 @@
+{
+  "libs":[
+    "browser",
+    "chai",
+    "ecma5",
+    "ecma6",
+    "jquery",
+    "underscore"
+  ],
+  "plugins": {
+    "commonjs": {},
+    "complete_strings": {},
+    "doc_comment": {},
+    "es_modules": {},
+    "modules": {},
+    "node":{},
+    "node_resolve":{},
+    "requirejs": {},
+    "webpack": {}
+  }
+}
