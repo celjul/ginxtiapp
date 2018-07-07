@@ -41,7 +41,7 @@ class App extends Component<Props> {
             <Icon style={styles.icon} name="envelope" size={30} color="#FFF" />
             <TextInput style={styles.input}
               onChangeText={(text) => this.setState({ email: text })}
-              placeholder="usuario"
+              placeholder="Usuario"
               keyboardType="default"
               value={this.state.email}
             />
@@ -129,4 +129,7 @@ const styles = StyleSheet.create({
 export default createSwitchNavigator({
   Login: App,
   Index: DashboardIndex,
+},
+{
+  initialRouteName: 'Index',
 });
