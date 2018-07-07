@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Dimensions,
   Image,
@@ -11,16 +12,21 @@ import {
 } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { createSwitchNavigator } from 'react-navigation';
+import DashboardIndex from './pages/dashboard/index';
 import { NeonGreen, PrimaryColor, White } from './styles';
 
-type Props = {};
-export default class App extends Component<Props> {
+type Props = {
+  navigation: PropTypes.object.isRequired,
+};
+class App extends Component<Props> {
   state = {
     email: '',
     password: '',
   }
 
   onSubmitLogin(){
+    this.props.navigation.navigate('Index');
   }
 
   render() {
@@ -118,4 +124,9 @@ const styles = StyleSheet.create({
     color: White,
     textTransform: 'uppercase',
   },
+});
+
+export default createSwitchNavigator({
+  Login: App,
+  Index: DashboardIndex,
 });
