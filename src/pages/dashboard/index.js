@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { DarkPrimaryColor, PrimaryColor, NeonGreen } from '../../styles';
 import SocialView from './social';
 import ContentView from './content';
+import SponsorsView from './sponsors';
 
 type Props = {
   navigation: PropTypes.object.isRequired,
@@ -49,7 +50,7 @@ class DashboardIndex extends Component<Props> {
         <View style={styles.buttons}>
           <TouchableOpacity
             style={styles.iconButton}
-            onPress={() => this.props.navigation.navigate('Content')}>
+            onPress={() => this.props.navigation.navigate('Sponsors')}>
             <Icon name="users" size={70} color={NeonGreen}/>
           </TouchableOpacity>
           <TouchableOpacity
@@ -105,4 +106,10 @@ export default createStackNavigator({
     },
   },
   Content: ContentView,
+  Sponsors: {
+    screen: SponsorsView,
+    navigationOptions: {
+      headerTitle: 'Patrocinadores',
+    },
+  },
 });

@@ -4,5 +4,7 @@ export const LightGray = '#C2C2C2';
 export const White = '#FFF';
 export const Black = '#000';
 export const NeonGreen = '#BCDA34';
+export const DarkNeonGreen = '#617214';
 export const FacebookBlue = '#3B5998';
 export const TwitterBlue = '#5DA4EC';
+export const GoogleRed = '#5DA4EC';
