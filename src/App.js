@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { createSwitchNavigator } from 'react-navigation';
 import DashboardIndex from './pages/dashboard/index';
 import { NeonGreen, PrimaryColor, White } from './styles';
+import { fetchApi } from './api';
 
 type Props = {
   navigation: PropTypes.object.isRequired,
@@ -25,8 +26,23 @@ class App extends Component<Props> {
     password: '',
   }
 
-  onSubmitLogin(){
-    this.props.navigation.navigate('Index');
+  async onSubmitLogin(){
+    this.setState({ loading: true });
+    try {
+      let form = new FormData();
+      form.append('email', this.state.email);
+      form.append('codigo', this.state.password);
+      await fetchApi(
+        '/RESTloginapp',
+        form,
+        'post'
+      );
+      this.props.navigation.navigate('Index');
+    } catch (exception) {
+      console.log(exception);
+      this.setState({ loading: false });
+      this.dropdown.alertWithType('error', 'Error', 'Ocurrio un error, intente mas tarde');
+    }
   }
 
   render() {
@@ -51,7 +67,7 @@ class App extends Component<Props> {
             <TextInput style={styles.input}
               onChangeText={(text) => this.setState({ password: text })}
               secureTextEntry={true}
-              placeholder="***********"
+              placeholder="Codigo"
               value={this.state.password}
             />
           </View>
