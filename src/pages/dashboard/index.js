@@ -7,11 +7,11 @@ import {
   View
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { DarkPrimaryColor, PrimaryColor, NeonGreen } from '../../styles';
+import { DarkPrimaryColor, PrimaryColor } from '../../styles';
 import SocialView from './social';
 import ContentView from './content';
 import SponsorsView from './sponsors';
+import ExhibitorsView from './exhibitors';
 import SpeakersView from './speakers';
 import SpeakerView from './speaker';
 
@@ -29,36 +29,36 @@ class DashboardIndex extends Component<Props> {
           <TouchableOpacity
             style={styles.iconButton}
             onPress={() => this.props.navigation.navigate('Content')}>
-            <Icon name="calendar" size={70} color={NeonGreen}/>
+            <Image style={styles.imageIcon} source={require('../../assets/agenda.png')}/>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconButton}
             onPress={() => this.props.navigation.navigate('Speakers')}>
-            <Icon name="user" size={70} color={NeonGreen} />
+            <Image style={styles.imageIcon} source={require('../../assets/speakers.png')}/>
           </TouchableOpacity>
         </View>
         <View style={styles.buttons}>
           <TouchableOpacity
             style={styles.iconButton}
-            onPress={() => this.props.navigation.navigate('Content')}>
-            <Icon name="list-alt" size={70} color={NeonGreen}/>
+            onPress={() => this.props.navigation.navigate('Exhibitors')}>
+            <Image style={styles.imageIcon} source={require('../../assets/exhibitors.png')}/>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconButton}
             onPress={() => this.props.navigation.navigate('Social')}>
-            <Icon name="thumbs-up" size={70} color={NeonGreen} />
+            <Image style={styles.imageIcon} source={require('../../assets/socialmedia.png')}/>
           </TouchableOpacity>
         </View>
         <View style={styles.buttons}>
           <TouchableOpacity
             style={styles.iconButton}
             onPress={() => this.props.navigation.navigate('Sponsors')}>
-            <Icon name="users" size={70} color={NeonGreen}/>
+            <Image style={styles.imageIcon} source={require('../../assets/sponsors.png')}/>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconButton}
             onPress={() => this.props.navigation.navigate('Content')}>
-            <Icon name="volume-up" size={70} color={NeonGreen} />
+            <Image style={styles.imageIcon} source={require('../../assets/notifications.png')}/>
           </TouchableOpacity>
         </View>
       </View>
@@ -92,6 +92,10 @@ const styles = StyleSheet.create({
     borderColor: DarkPrimaryColor,
     borderWidth: 2,
   },
+  imageIcon: {
+    height: '60%',
+    resizeMode: 'contain',
+  },
 });
 
 export default createStackNavigator({
@@ -112,6 +116,12 @@ export default createStackNavigator({
     screen: SponsorsView,
     navigationOptions: {
       headerTitle: 'Patrocinadores',
+    },
+  },
+  Exhibitors: {
+    screen: ExhibitorsView,
+    navigationOptions: {
+      headerTitle: 'Expositores',
     },
   },
   Speakers: {
