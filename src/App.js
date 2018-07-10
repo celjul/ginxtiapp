@@ -129,7 +129,4 @@ const styles = StyleSheet.create({
 export default createSwitchNavigator({
   Login: App,
   Index: DashboardIndex,
-},
-{
-  initialRouteName: 'Index',
 });
