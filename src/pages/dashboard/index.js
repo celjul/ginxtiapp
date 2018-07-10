@@ -9,7 +9,8 @@ import {
 import { createStackNavigator } from 'react-navigation';
 import { DarkPrimaryColor, PrimaryColor } from '../../styles';
 import SocialView from './social';
-import ContentView from './content';
+import NotificationsView from './notifications';
+import AgendaView from './agenda';
 import SponsorsView from './sponsors';
 import ExhibitorsView from './exhibitors';
 import SpeakersView from './speakers';
@@ -28,7 +29,7 @@ class DashboardIndex extends Component<Props> {
         <View style={styles.buttons}>
           <TouchableOpacity
             style={styles.iconButton}
-            onPress={() => this.props.navigation.navigate('Content')}>
+            onPress={() => this.props.navigation.navigate('Agenda')}>
             <Image style={styles.imageIcon} source={require('../../assets/agenda.png')}/>
           </TouchableOpacity>
           <TouchableOpacity
@@ -57,7 +58,7 @@ class DashboardIndex extends Component<Props> {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconButton}
-            onPress={() => this.props.navigation.navigate('Content')}>
+            onPress={() => this.props.navigation.navigate('Notifications')}>
             <Image style={styles.imageIcon} source={require('../../assets/notifications.png')}/>
           </TouchableOpacity>
         </View>
@@ -111,7 +112,12 @@ export default createStackNavigator({
       headerTitle: 'Social Media',
     },
   },
-  Content: ContentView,
+  Agenda: {
+    screen: AgendaView,
+    navigationOptions: {
+      headerTitle: 'Agenda',
+    },
+  },
   Sponsors: {
     screen: SponsorsView,
     navigationOptions: {
@@ -122,6 +128,12 @@ export default createStackNavigator({
     screen: ExhibitorsView,
     navigationOptions: {
       headerTitle: 'Expositores',
+    },
+  },
+  Notifications: {
+    screen: NotificationsView,
+    navigationOptions: {
+      headerTitle: 'Notificaciones',
     },
   },
   Speakers: {
