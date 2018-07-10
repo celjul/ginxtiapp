@@ -12,6 +12,8 @@ import { DarkPrimaryColor, PrimaryColor, NeonGreen } from '../../styles';
 import SocialView from './social';
 import ContentView from './content';
 import SponsorsView from './sponsors';
+import SpeakersView from './speakers';
+import SpeakerView from './speaker';
 
 type Props = {
   navigation: PropTypes.object.isRequired,
@@ -31,7 +33,7 @@ class DashboardIndex extends Component<Props> {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconButton}
-            onPress={() => this.props.navigation.navigate('Content')}>
+            onPress={() => this.props.navigation.navigate('Speakers')}>
             <Icon name="user" size={70} color={NeonGreen} />
           </TouchableOpacity>
         </View>
@@ -110,6 +112,18 @@ export default createStackNavigator({
     screen: SponsorsView,
     navigationOptions: {
       headerTitle: 'Patrocinadores',
+    },
+  },
+  Speakers: {
+    screen: SpeakersView,
+    navigationOptions: {
+      headerTitle: 'Ponentes',
+    },
+  },
+  Speaker: {
+    screen: SpeakerView,
+    navigationOptions: {
+      headerTitle: 'Ponente',
     },
   },
 });
