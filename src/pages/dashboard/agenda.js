@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import PropTypes from 'prop-types';
+import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
 import Spinner from 'react-native-spinkit';
 import Moment from 'moment';
+import AgendaDate from '../../components/agenda_date';
 import { PrimaryColor, NeonGreen, White } from '../../styles';
 import { fetchApi } from '../../api';
 
-type Props = {};
+type Props = {
+  navigation: PropTypes.object.isRequired,
+};
 export default class Agenda extends Component<Props> {
   state = {
     loading: true,
@@ -19,7 +23,6 @@ export default class Agenda extends Component<Props> {
 
       if(response && response.agenda){
         sponsors = this._groupByDate(response.agenda);
-        debugger;
       }
 
       this.setState({
@@ -43,9 +46,14 @@ export default class Agenda extends Component<Props> {
       days[key].push(element);
     });
 
+    let elements = Object.keys(days).map((key) => {
+      return {
+        date: key,
+        events: days[key]
+      };
+    });
 
-
-    return days;
+    return elements;
   }
 
   render(){
@@ -61,7 +69,23 @@ export default class Agenda extends Component<Props> {
         </View>
       );
     } else {
-      return (<View></View>);
+      return (
+        <FlatList
+          style={styles.flatlist}
+          data={this.state.sponsors}
+          keyExtractor={(item) => item.date}
+          renderItem={({ item }) =>
+            <AgendaDate
+              date={item.date}
+              key={item.date}
+              onPress={() =>
+                this.props.navigation.navigate('Events', {
+                  events: item.events,
+                  date: item.date,
+                })
+              }/>
+          }/>
+      );
     }
   }
 }
@@ -82,5 +106,8 @@ const styles =  StyleSheet.create({
     backgroundColor: PrimaryColor,
     borderWidth: 0,
     padding: 50,
+  },
+  flatlist: {
+    backgroundColor: PrimaryColor,
   },
 });

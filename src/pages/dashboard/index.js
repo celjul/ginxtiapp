@@ -6,11 +6,14 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import Moment from 'moment';
+import 'moment/locale/es';
 import { createStackNavigator } from 'react-navigation';
 import { DarkPrimaryColor, PrimaryColor } from '../../styles';
 import SocialView from './social';
 import NotificationsView from './notifications';
 import AgendaView from './agenda';
+import EventsView from './events';
 import SponsorsView from './sponsors';
 import ExhibitorsView from './exhibitors';
 import SpeakersView from './speakers';
@@ -116,6 +119,16 @@ export default createStackNavigator({
     screen: AgendaView,
     navigationOptions: {
       headerTitle: 'Agenda',
+    },
+  },
+  Events: {
+    screen: EventsView,
+    navigationOptions: ({ navigation }) => {
+      const { params } = navigation.state;
+
+      return {
+        headerTitle: Moment(Number(params.date)).format('DD [de] MMMM [de] YYYY'),
+      };
     },
   },
   Sponsors: {
