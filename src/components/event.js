@@ -7,7 +7,6 @@ import {
 import PropTypes from 'prop-types';
 import 'moment/locale/es';
 import {
-  NeonGreen,
   DarkNeonGreen,
   White
 } from '../styles';
