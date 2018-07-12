@@ -38,7 +38,7 @@ export default class Sponsor extends Component<Props> {
     } else {
       return (
         <TouchableOpacity onPress={this._goTo.bind(this, this.props.twitter)}>
-          <Icon name="twitter" size={40} color={TwitterBlue}/>
+          <Icon name="twitter" size={30} color={TwitterBlue}/>
         </TouchableOpacity>
       );
     }
@@ -50,7 +50,7 @@ export default class Sponsor extends Component<Props> {
     } else {
       return (
         <TouchableOpacity onPress={this._goTo.bind(this, this.props.facebook)}>
-          <Icon name="facebook" size={40} color={FacebookBlue}/>
+          <Icon name="facebook" size={30} color={FacebookBlue}/>
         </TouchableOpacity>
       );
     }
@@ -62,7 +62,7 @@ export default class Sponsor extends Component<Props> {
     } else {
       return (
         <TouchableOpacity onPress={this._goTo.bind(this, this.props.paginainternet)}>
-          <Icon name="link" size={40} color={NeonGreen}/>
+          <Icon name="link" size={30} color={NeonGreen}/>
         </TouchableOpacity>
       );
     }
@@ -74,7 +74,7 @@ export default class Sponsor extends Component<Props> {
     } else {
       return (
         <TouchableOpacity onPress={this._goTo.bind(this, this.props.google)}>
-          <Icon name="link" size={40} color={GoogleRed}/>
+          <Icon name="link" size={30} color={GoogleRed}/>
         </TouchableOpacity>
       );
     }
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     borderBottomColor: DarkNeonGreen,
   },
   picture: {
-    width: '20%',
+    width: '30%',
     height: '100%',
   },
   logo: {

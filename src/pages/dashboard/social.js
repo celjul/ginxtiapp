@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Linking,
   StyleSheet,
   View
 } from 'react-native';
@@ -12,13 +13,18 @@ import {
 
 type Props = {};
 export default class Social extends Component<Props> {
+  _goTo(url){
+    Linking.openURL(url);
+  }
+
   render(){
     return (
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
           <Icon.Button
             name="facebook"
-            size={90}
+            size={70}
+            onPress={this._goTo.bind(this, 'https://www.facebook.com/GINxti/')}
             backgroundColor={FacebookBlue}
             style={styles.socialButton}
             iconStyle={styles.socialButtonIcon}>
@@ -27,7 +33,8 @@ export default class Social extends Component<Props> {
         <View style={styles.buttonContainer}>
           <Icon.Button
             name="twitter"
-            size={90}
+            size={70}
+            onPress={this._goTo.bind(this, 'https://twitter.com/GINxti')}
             backgroundColor={TwitterBlue}
             style={styles.socialButton}
             iconStyle={styles.socialButtonIcon}>
