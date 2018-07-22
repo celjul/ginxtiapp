@@ -51,8 +51,8 @@
 			</dict>
 			<key>inredsis.dnsalias.com</key>
 			<dict>
-        <key>NSIncludesSubdomains</key>
-        <true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
