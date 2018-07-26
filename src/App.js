@@ -11,6 +11,7 @@ import {
   View
 } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
+import OneSignal from 'react-native-onesignal';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createSwitchNavigator } from 'react-navigation';
 import DashboardIndex from './pages/dashboard/index';
@@ -24,6 +25,10 @@ class App extends Component<Props> {
   state = {
     email: '',
     password: '',
+  }
+
+  componentDidMount(){
+    OneSignal.init("a974405d-f9fc-471a-8619-bcf14f837e58");
   }
 
   async onSubmitLogin(){
