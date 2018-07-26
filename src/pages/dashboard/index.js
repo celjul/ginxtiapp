@@ -12,6 +12,7 @@ import { createStackNavigator } from 'react-navigation';
 import { DarkPrimaryColor, PrimaryColor } from '../../styles';
 import SocialView from './social';
 import NotificationsView from './notifications';
+import NotificationView from './notification';
 import AgendaView from './agenda';
 import EventsView from './events';
 import SponsorsView from './sponsors';
@@ -152,6 +153,12 @@ export default createStackNavigator({
     screen: NotificationsView,
     navigationOptions: {
       headerTitle: 'Notificaciones',
+    },
+  },
+  Notification: {
+    screen: NotificationView,
+    navigationOptions: {
+      headerTitle: '',
     },
   },
   Speakers: {
