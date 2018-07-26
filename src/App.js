@@ -46,7 +46,11 @@ class App extends Component<Props> {
     } catch (exception) {
       console.log(exception);
       this.setState({ loading: false });
-      this.dropdown.alertWithType('error', 'Error', 'Ocurrio un error, intente mas tarde');
+      if(exception.message === 'Unauthenticated'){
+        this.dropdown.alertWithType('error', 'Error', 'Usuario y/o código incorrecto');
+      } else {
+        this.dropdown.alertWithType('error', 'Error', 'Ocurrio un error, intente mas tarde');
+      }
     }
   }
 
@@ -72,7 +76,7 @@ class App extends Component<Props> {
             <TextInput style={styles.input}
               onChangeText={(text) => this.setState({ password: text })}
               secureTextEntry={true}
-              placeholder="Codigo"
+              placeholder="Código"
               value={this.state.password}
             />
           </View>

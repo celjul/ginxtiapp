@@ -14,11 +14,15 @@ export const fetchApi = async (endpoint, payload = {}, method = 'get', headers =
 
   let response = await fetch(`${APP_URL}${endpoint}`, options);
 
-  let json = await response.json();
+  let json = {};
 
-  if(!response.ok){
-    let error = JSON.stringify(json);
+  if(response.status === 401){
+    throw Error('Unauthenticated');
+  } else if(!response.ok){
+    let error = await response.text();
     throw Error(error);
+  } else {
+    json = await response.json();
   }
 
   return json;
