@@ -1,4 +1,4 @@
-package com.ginxti;
+package bstmexico.com.ginxti;
 
 import com.facebook.react.ReactActivity;
 

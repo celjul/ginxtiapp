@@ -50,6 +50,7 @@
 		2C9A73B80AD44B2392A01171 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4986723633A4430A7A1AFD0 /* Octicons.ttf */; };
 		A31A36828D3642D9B632FCC2 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4C554A909664FF7B4587C91 /* SimpleLineIcons.ttf */; };
 		D9D13E23B5FB4DA78DAACEAA /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B5E246A340A4D29843CF215 /* Zocial.ttf */; };
+		07CC2FB19F904F8CA45EC793 /* libRNEstimoteProximity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FD3150CBF448E0B6E9DFEF /* libRNEstimoteProximity.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -370,6 +371,8 @@
 		F4986723633A4430A7A1AFD0 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B4C554A909664FF7B4587C91 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0B5E246A340A4D29843CF215 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EB6A12EA17D64D5DA417FF9F /* RNEstimoteProximity.xcodeproj */ = {isa = PBXFileReference; name = "RNEstimoteProximity.xcodeproj"; path = "../node_modules/@estimote/react-native-proximity/ios/RNEstimoteProximity.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		16FD3150CBF448E0B6E9DFEF /* libRNEstimoteProximity.a */ = {isa = PBXFileReference; name = "libRNEstimoteProximity.a"; path = "libRNEstimoteProximity.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +403,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				E1B19ADA236049BD86F2CF6B /* libRNSpinkit.a in Frameworks */,
 				B037F2D67D8A48AE9CA81D33 /* libRNVectorIcons.a in Frameworks */,
+				07CC2FB19F904F8CA45EC793 /* libRNEstimoteProximity.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +592,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				D7546EAD6A864138BCBF8F8E /* RNSpinkit.xcodeproj */,
 				68AEDC23806647A29B84AAE3 /* RNVectorIcons.xcodeproj */,
+				EB6A12EA17D64D5DA417FF9F /* RNEstimoteProximity.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1247,11 +1252,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Debug;
@@ -1274,11 +1281,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Release;
@@ -1302,6 +1311,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Debug;
@@ -1324,6 +1334,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Release;
@@ -1355,11 +1366,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Debug;
@@ -1391,11 +1404,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Release;
@@ -1426,11 +1441,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Debug;
@@ -1461,11 +1478,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/@estimote/react-native-proximity/ios/**",
 				);
 			};
 			name = Release;

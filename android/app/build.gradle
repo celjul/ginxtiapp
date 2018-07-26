@@ -148,6 +148,7 @@ android {
 }
 
 dependencies {
+    compile project(':@estimote_react-native-proximity')
     compile project(':react-native-vector-icons')
     compile project(':react-native-spinkit')
     compile fileTree(dir: "libs", include: ["*.jar"])

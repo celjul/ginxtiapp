@@ -18,11 +18,16 @@ import SponsorsView from './sponsors';
 import ExhibitorsView from './exhibitors';
 import SpeakersView from './speakers';
 import SpeakerView from './speaker';
+import { ProximityInitializer } from '../../util/proximity';
 
 type Props = {
   navigation: PropTypes.object.isRequired,
 };
 class DashboardIndex extends Component<Props> {
+  componentDidMount(){
+    ProximityInitializer();
+  }
+
   render(){
     return (
       <View style={styles.container}>
