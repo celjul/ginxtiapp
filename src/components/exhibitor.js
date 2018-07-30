@@ -86,7 +86,7 @@ export default class Exhibitor extends Component<Props> {
         <View style={styles.picture}>
           <Image style={styles.logo} source={{uri: `data:image/png;base64,${this.props.logo}`}}/>
         </View>
-        <View>
+        <View style={styles.textContainer}>
           <Text style={styles.sponsorName}>{this.props.nombre}</Text>
           <View style={styles.links}>
             {this._renderUrl()}
@@ -104,12 +104,15 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: 120,
-    padding: 10,
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderBottomColor: DarkNeonGreen,
   },
+  textContainer: {
+    margin: 10,
+  },
   picture: {
+    backgroundColor: White,
     width: '30%',
     height: '100%',
   },
