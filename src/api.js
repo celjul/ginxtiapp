@@ -11,8 +11,12 @@ export const fetchApi = async (endpoint, payload = {}, method = 'get', headers =
   };
 
   if(method === 'get' || method === 'head'){ delete options['body']; }
+  let url = `${APP_URL}${endpoint}`;
+  let startTime = new Date().getTime();
+  let response = await fetch(`${url}`, options);
+  let endTime = new Date().getTime();
 
-  let response = await fetch(`${APP_URL}${endpoint}`, options);
+  console.log(`${response.status} ${method.toUpperCase()}: ${url} in ${(endTime - startTime)}ms`);
 
   let json = {};
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   AsyncStorage,
-  Dimensions,
   Image,
   StyleSheet,
   TouchableOpacity,
@@ -10,10 +9,9 @@ import {
 } from 'react-native';
 import Moment from 'moment';
 import 'moment/locale/es';
-import Spinner from 'react-native-spinkit';
 import Onboarding from 'react-native-onboarding-swiper';
 import { createStackNavigator } from 'react-navigation';
-import { DarkPrimaryColor, NeonGreen, PrimaryColor, White } from '../../styles';
+import { DarkPrimaryColor, PrimaryColor } from '../../styles';
 import SocialView from './social';
 import NotificationsView from './notifications';
 import NotificationView from './notification';
@@ -23,6 +21,7 @@ import SponsorsView from './sponsors';
 import ExhibitorsView from './exhibitors';
 import SpeakersView from './speakers';
 import SpeakerView from './speaker';
+import Loading from '../../components/loading';
 import { ProximityInitializer } from '../../util/proximity';
 
 type Props = {
@@ -53,16 +52,7 @@ class DashboardIndex extends Component<Props> {
 
   render(){
     if (this.state.loading) {
-      return (
-        <View style={styles.spinnerContainer}>
-          <Spinner
-            style={styles.spinner}
-            isVisible={this.state.loading}
-            size={Dimensions.get('window').width / 4}
-            type={'ChasingDots'}
-            color={NeonGreen}/>
-        </View>
-      );
+      return (<Loading loading={this.state.loading}/>);
     } else if (this.state.onboarding !== 'true') {
       return (
         <Onboarding
@@ -139,22 +129,6 @@ class DashboardIndex extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  spinner: {
-    flex: 1,
-    alignItems: 'center',
-    borderColor: White,
-    borderWidth: 0,
-  },
-  spinnerContainer: {
-    flex: 1,
-    alignItems: 'center',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    borderColor: White,
-    backgroundColor: PrimaryColor,
-    borderWidth: 0,
-    padding: 50,
-  },
   container: {
     flex: 1,
   },

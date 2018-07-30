@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
-import Spinner from 'react-native-spinkit';
+import { FlatList, StyleSheet } from 'react-native';
 import Speaker from '../../components/speaker';
-import { PrimaryColor, NeonGreen, White } from '../../styles';
+import Loading from '../../components/loading';
+import { PrimaryColor } from '../../styles';
 import { fetchApi } from '../../api';
 
 type Props = {
@@ -37,16 +37,7 @@ export default class Sponsors extends Component<Props> {
 
   render(){
     if (this.state.loading) {
-      return (
-        <View style={styles.spinnerContainer}>
-          <Spinner
-            style={styles.spinner}
-            isVisible={this.state.loading}
-            size={Dimensions.get('window').width / 4}
-            type={'ChasingDots'}
-            color={NeonGreen}/>
-        </View>
-      );
+      return (<Loading loading={this.state.loading}/>);
     } else {
       return (
         <FlatList
@@ -65,22 +56,6 @@ export default class Sponsors extends Component<Props> {
 }
 
 const styles =  StyleSheet.create({
-  spinner: {
-    flex: 1,
-    alignItems: 'center',
-    borderColor: White,
-    borderWidth: 0,
-  },
-  spinnerContainer: {
-    flex: 1,
-    alignItems: 'center',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    borderColor: White,
-    backgroundColor: PrimaryColor,
-    borderWidth: 0,
-    padding: 50,
-  },
   flatlist: {
     backgroundColor: PrimaryColor,
   },

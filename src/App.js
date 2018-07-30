@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
+  AsyncStorage,
   Dimensions,
   Image,
   ScrollView,
@@ -15,6 +16,7 @@ import OneSignal from 'react-native-onesignal';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createSwitchNavigator } from 'react-navigation';
 import DashboardIndex from './pages/dashboard/index';
+import Loading from './components/loading';
 import { NeonGreen, PrimaryColor, White } from './styles';
 import { fetchApi } from './api';
 
@@ -23,12 +25,29 @@ type Props = {
 };
 class App extends Component<Props> {
   state = {
+    loading: true,
     email: '',
     password: '',
   }
 
-  componentDidMount(){
-    OneSignal.init("a974405d-f9fc-471a-8619-bcf14f837e58");
+  async componentDidMount(){
+    OneSignal.init('a974405d-f9fc-471a-8619-bcf14f837e58');
+    OneSignal.addEventListener('ids', this.setDeviceId);
+    OneSignal.configure();
+    let user = await AsyncStorage.getItem('USER_ID');
+    if(user && user !== null && user !== undefined){
+      this.props.navigation.navigate('Index');
+    } else {
+      this.setState({ loading: false });
+    }
+  }
+
+  componentWillUnmount() {
+    OneSignal.removeEventListener('ids', this.setDeviceId);
+  }
+
+  async setDeviceId(device){
+    await AsyncStorage.setItem('ONESIGNAL_PLAYER_ID', device.userId);
   }
 
   async onSubmitLogin(){
@@ -37,11 +56,15 @@ class App extends Component<Props> {
       let form = new FormData();
       form.append('email', this.state.email);
       form.append('codigo', this.state.password);
-      await fetchApi(
+      let response = await fetchApi(
         '/RESTloginapp',
         form,
         'post'
       );
+      console.log(response);
+      if(response && response.Usuario){
+        await AsyncStorage.setItem('USER_ID', `${response.Usuario.id}`);
+      }
       this.props.navigation.navigate('Index');
     } catch (exception) {
       console.log(exception);
@@ -55,42 +78,46 @@ class App extends Component<Props> {
   }
 
   render() {
-    return (
-      <ScrollView style={styles.container} contentContainerStyle={styles.scrollViewContainer}>
-        <View style={styles.centeredImageContainer}>
-          <Image source={require('./assets/logo.png')}/>
-          <Image source={require('./assets/separator.png')}/>
-        </View>
-        <View style={styles.loginForm}>
-          <View style={styles.inputContainer}>
-            <Icon style={styles.icon} name="envelope" size={30} color="#FFF" />
-            <TextInput style={styles.input}
-              onChangeText={(text) => this.setState({ email: text })}
-              placeholder="Usuario"
-              keyboardType="default"
-              value={this.state.email}
-            />
+    if (this.state.loading) {
+      return (<Loading loading={this.state.loading}/>);
+    } else {
+      return (
+        <ScrollView style={styles.container} contentContainerStyle={styles.scrollViewContainer}>
+          <View style={styles.centeredImageContainer}>
+            <Image source={require('./assets/logo.png')}/>
+            <Image source={require('./assets/separator.png')}/>
           </View>
-          <View style={styles.inputContainer}>
-            <Icon style={styles.icon} name="lock" size={30} color="#FFF" />
-            <TextInput style={styles.input}
-              onChangeText={(text) => this.setState({ password: text })}
-              secureTextEntry={true}
-              placeholder="Código"
-              value={this.state.password}
-            />
+          <View style={styles.loginForm}>
+            <View style={styles.inputContainer}>
+              <Icon style={styles.icon} name="envelope" size={30} color="#FFF" />
+              <TextInput style={styles.input}
+                onChangeText={(text) => this.setState({ email: text })}
+                placeholder="Usuario"
+                keyboardType="default"
+                value={this.state.email}
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <Icon style={styles.icon} name="lock" size={30} color="#FFF" />
+              <TextInput style={styles.input}
+                onChangeText={(text) => this.setState({ password: text })}
+                secureTextEntry={true}
+                placeholder="Código"
+                value={this.state.password}
+              />
+            </View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={this.onSubmitLogin.bind(this)}>
+              <Text style={styles.buttonText}>
+                Enviar
+              </Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={this.onSubmitLogin.bind(this)}>
-            <Text style={styles.buttonText}>
-              Enviar
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <DropdownAlert ref={ref => this.dropdown = ref} />
-      </ScrollView>
-    );
+          <DropdownAlert ref={ref => this.dropdown = ref} />
+        </ScrollView>
+      );
+    }
   }
 }
 
