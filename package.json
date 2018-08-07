@@ -8,11 +8,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@estimote/react-native-proximity": "^0.3.2",
+    "@estimote/react-native-proximity": "git+https://git@github.com/richipargo/react-native-proximity.git",
     "moment": "^2.22.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-dropdownalert": "^3.4.0",
+    "react-native-elements": "^0.19.1",
     "react-native-onboarding-swiper": "^0.6.0",
     "react-native-onesignal": "^3.2.5",
     "react-native-spinkit": "^1.1.1",

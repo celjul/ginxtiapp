@@ -84,7 +84,7 @@ class App extends Component<Props> {
       return (
         <ScrollView style={styles.container} contentContainerStyle={styles.scrollViewContainer}>
           <View style={styles.centeredImageContainer}>
-            <Image source={require('./assets/logo.png')}/>
+            <Image style={styles.centeredImage} source={require('./assets/logo.png')}/>
             <Image source={require('./assets/separator.png')}/>
           </View>
           <View style={styles.loginForm}>
@@ -138,6 +138,10 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  centeredImage: {
+    width: '80%',
+    resizeMode: 'contain',
   },
   loginForm: {
     flex: 2,

@@ -11,6 +11,7 @@ import Moment from 'moment';
 import 'moment/locale/es';
 import Onboarding from 'react-native-onboarding-swiper';
 import { createStackNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
 import { DarkPrimaryColor, PrimaryColor } from '../../styles';
 import SocialView from './social';
 import NotificationsView from './notifications';
@@ -28,12 +29,54 @@ type Props = {
   navigation: PropTypes.object.isRequired,
 };
 class DashboardIndex extends Component<Props> {
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+
+    return {
+      headerRight: (
+        <View>
+          <Icon
+            name="logout"
+            type="material-community"
+            size={30}
+            onPress={() => params.handleLogout()}
+            containerStyle={styles.hamburger}
+            color={PrimaryColor} />
+        </View>
+      ),
+      headerLeft: (
+        <View>
+          <Icon
+            name="help-circle"
+            type="feather"
+            size={30}
+            onPress={() => params.handleOnboarding()}
+            containerStyle={styles.hamburger}
+            color={PrimaryColor} />
+        </View>
+      ),
+    };
+  }
+
   state = {
     loading: true,
     onboarding: 'false',
   }
 
+  async _handleLogout(){
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Login');
+  }
+
+  _handleOnboarding(){
+    this.setState({ onboarding: undefined });
+  }
+
   async componentDidMount(){
+    this.props.navigation.setParams({
+      handleLogout: this._handleLogout.bind(this),
+      handleOnboarding: this._handleOnboarding.bind(this),
+    });
     let onboarding = await AsyncStorage.getItem('ONBOARDING');
 
     this.setState({ onboarding, loading: false }, () => {
@@ -58,24 +101,25 @@ class DashboardIndex extends Component<Props> {
         <Onboarding
           onSkip={this.onOnboardingDone.bind(this)}
           onDone={this.onOnboardingDone.bind(this)}
+          imageContainerStyles={styles.onboardingImage}
           pages={[{
             backgroundColor: PrimaryColor,
-            image: <Image source={require('../../assets/logo.png')}/>,
+            image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: 'Bienvenido a la app oficial del 6to Congreso Nacional GINgroup.',
             subtitle: 'Ahora tu teléfono móvil es la entrada al evento.'
           }, {
             backgroundColor: PrimaryColor,
-            image: <Image source={require('../../assets/logo.png')}/>,
+            image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: 'Aquí encontrarás toda la información que necesitas para vivir la experiencia de la Innovacción como:',
             subtitle: 'Expositores\nAgenda\nGalería\nRedes Sociales\n¡Y mucho más!'
           }, {
             backgroundColor: PrimaryColor,
-            image: <Image source={require('../../assets/logo.png')}/>,
+            image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: '¡Bienvenido a Innovacción: Ideas en acción, 6to Congreso Nacional GINgroup|GINxti!',
             subtitle: 'Recuerda activar el bluetooth de tu teléfono cuando llegues al evento y otorga el permiso a la app de enviarte notificaciones.'
           }, {
             backgroundColor: PrimaryColor,
-            image: <Image source={require('../../assets/logo.png')}/>,
+            image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: '¡Bienvenido a Innovacción: Ideas en acción, 6to Congreso Nacional GINgroup|GINxti!',
             subtitle: 'Para la mejor experiencia en el evento te pedimos permisos de ubicación y recibiras informacion detallada'
           }]}/>
@@ -84,7 +128,7 @@ class DashboardIndex extends Component<Props> {
       return (
         <View style={styles.container}>
           <View style={styles.centeredImageContainer}>
-            <Image source={require('../../assets/logo.png')}/>
+            <Image style={styles.centeredImage} source={require('../../assets/logo.png')}/>
           </View>
           <View style={styles.buttons}>
             <TouchableOpacity
@@ -134,10 +178,25 @@ const styles = StyleSheet.create({
   },
   centeredImageContainer: {
     flex: 1,
-    marginBottom: 20,
+    width: '100%',
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  centeredImage: {
+    marginHorizontal: 30,
+    resizeMode: 'contain',
+    width: '100%',
+  },
+  centeredImageOnboarding: {
+    marginHorizontal: 30,
+    resizeMode: 'contain',
+    maxWidth: '80%',
+    height: 70,
+  },
+  onboardingImage: {
+    paddingBottom: 10,
+    flex: 1,
   },
   buttons: {
     flex: 1,
@@ -158,14 +217,14 @@ const styles = StyleSheet.create({
     height: '60%',
     resizeMode: 'contain',
   },
+  hamburger: {
+    margin: 10,
+  },
 });
 
 export default createStackNavigator({
   Navigation: {
     screen: DashboardIndex,
-    navigationOptions: {
-      header: null,
-    },
   },
   Social: {
     screen: SocialView,
