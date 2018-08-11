@@ -4,13 +4,13 @@ import {
   AsyncStorage,
   Dimensions,
   Image,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import DropdownAlert from 'react-native-dropdownalert';
 import OneSignal from 'react-native-onesignal';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -82,7 +82,7 @@ class App extends Component<Props> {
       return (<Loading loading={this.state.loading}/>);
     } else {
       return (
-        <ScrollView style={styles.container} contentContainerStyle={styles.scrollViewContainer}>
+        <KeyboardAwareScrollView style={styles.container} contentContainerStyle={styles.scrollViewContainer}>
           <View style={styles.centeredImageContainer}>
             <Image style={styles.centeredImage} source={require('./assets/logo.png')}/>
             <Image source={require('./assets/separator.png')}/>
@@ -115,7 +115,7 @@ class App extends Component<Props> {
             </TouchableOpacity>
           </View>
           <DropdownAlert ref={ref => this.dropdown = ref} />
-        </ScrollView>
+        </KeyboardAwareScrollView>
       );
     }
   }
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   centeredImageContainer: {
-    flex: 2,
+    flex: 3,
     marginBottom: 20,
     alignSelf: 'stretch',
     alignItems: 'center',
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
   },
   centeredImage: {
     width: '80%',
+    height: 100,
     resizeMode: 'contain',
   },
   loginForm: {

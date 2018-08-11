@@ -12,7 +12,7 @@ import 'moment/locale/es';
 import Onboarding from 'react-native-onboarding-swiper';
 import { createStackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-import { DarkPrimaryColor, PrimaryColor } from '../../styles';
+import { DarkPrimaryColor, NeonGreen, PrimaryColor } from '../../styles';
 import SocialView from './social';
 import NotificationsView from './notifications';
 import NotificationView from './notification';
@@ -33,6 +33,9 @@ class DashboardIndex extends Component<Props> {
     const { params = {} } = navigation.state;
 
     return {
+      headerStyle: {
+        backgroundColor: PrimaryColor,
+      },
       headerRight: (
         <View>
           <Icon
@@ -41,7 +44,7 @@ class DashboardIndex extends Component<Props> {
             size={30}
             onPress={() => params.handleLogout()}
             containerStyle={styles.hamburger}
-            color={PrimaryColor} />
+            color={NeonGreen} />
         </View>
       ),
       headerLeft: (
@@ -52,7 +55,7 @@ class DashboardIndex extends Component<Props> {
             size={30}
             onPress={() => params.handleOnboarding()}
             containerStyle={styles.hamburger}
-            color={PrimaryColor} />
+            color={NeonGreen} />
         </View>
       ),
     };
@@ -101,24 +104,29 @@ class DashboardIndex extends Component<Props> {
         <Onboarding
           onSkip={this.onOnboardingDone.bind(this)}
           onDone={this.onOnboardingDone.bind(this)}
-          imageContainerStyles={styles.onboardingImage}
+          skipLabel={"Saltar"}
+          nextLabel={"Siguiente"}
           pages={[{
             backgroundColor: PrimaryColor,
+            imageContainerStyles: styles.onboardingImage,
             image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: 'Bienvenido a la app oficial del 6to Congreso Nacional GINgroup.',
             subtitle: 'Ahora tu teléfono móvil es la entrada al evento.'
           }, {
             backgroundColor: PrimaryColor,
+            imageContainerStyles: styles.onboardingImage,
             image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: 'Aquí encontrarás toda la información que necesitas para vivir la experiencia de la Innovacción como:',
             subtitle: 'Expositores\nAgenda\nGalería\nRedes Sociales\n¡Y mucho más!'
           }, {
             backgroundColor: PrimaryColor,
+            imageContainerStyles: styles.onboardingImage,
             image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: '¡Bienvenido a Innovacción: Ideas en acción, 6to Congreso Nacional GINgroup|GINxti!',
             subtitle: 'Recuerda activar el bluetooth de tu teléfono cuando llegues al evento y otorga el permiso a la app de enviarte notificaciones.'
           }, {
             backgroundColor: PrimaryColor,
+            imageContainerStyles: styles.onboardingImage,
             image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: '¡Bienvenido a Innovacción: Ideas en acción, 6to Congreso Nacional GINgroup|GINxti!',
             subtitle: 'Para la mejor experiencia en el evento te pedimos permisos de ubicación y recibiras informacion detallada'
@@ -186,7 +194,7 @@ const styles = StyleSheet.create({
   centeredImage: {
     marginHorizontal: 30,
     resizeMode: 'contain',
-    width: '100%',
+    width: '80%',
   },
   centeredImageOnboarding: {
     marginHorizontal: 30,
@@ -195,8 +203,8 @@ const styles = StyleSheet.create({
     height: 70,
   },
   onboardingImage: {
-    paddingBottom: 10,
-    flex: 1,
+    // paddingBottom: 10,
+    marginTop: -300,
   },
   buttons: {
     flex: 1,

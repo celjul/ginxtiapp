@@ -101,8 +101,8 @@ android {
         applicationId "bstmexico.com.ginxti"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 18
-        versionName "2.2"
+        versionCode 19
+        versionName "2.2.1"
         multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86"

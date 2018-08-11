@@ -39,7 +39,11 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+  <string>Uses Beacon location for extra information for users that attend event</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Uses Beacon location for extra information for users that attend event</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+  <string>Uses Beacon location for extra information for users that attend event</string>
   <key>NSBluetoothPeripheralUsageDescription</key>
   <string>Uses Beacon location for extra information for users that attend event</string>
 	<key>NSAppTransportSecurity</key>
