@@ -41,7 +41,7 @@ class DashboardIndex extends Component<Props> {
           <Icon
             name="logout"
             type="material-community"
-            size={30}
+            size={25}
             onPress={() => params.handleLogout()}
             containerStyle={styles.hamburger}
             color={NeonGreen} />
@@ -52,7 +52,7 @@ class DashboardIndex extends Component<Props> {
           <Icon
             name="help-circle"
             type="feather"
-            size={30}
+            size={25}
             onPress={() => params.handleOnboarding()}
             containerStyle={styles.hamburger}
             color={NeonGreen} />
