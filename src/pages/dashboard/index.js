@@ -129,7 +129,7 @@ class DashboardIndex extends Component<Props> {
             imageContainerStyles: styles.onboardingImage,
             image: <Image style={styles.centeredImageOnboarding} source={require('../../assets/logo.png')}/>,
             title: '¡Bienvenido a Innovacción: Ideas en acción, 6to Congreso Nacional GINgroup|GINxti!',
-            subtitle: 'Para la mejor experiencia en el evento te pedimos permisos de ubicación y recibiras informacion detallada'
+            subtitle: 'Para la mejor experiencia en el evento te pedimos permisos de ubicación y recibiras información detallada'
           }]}/>
       );
     } else {
