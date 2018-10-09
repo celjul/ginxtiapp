@@ -1,0 +1,4 @@
+target "ginxti" do
+ pod "EstimoteProximitySDK"
+platform :ios, '11.0'
+end
